@@ -11,5 +11,18 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscaFigueiredo/Ecoleta.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranciscaFigueiredo/Ecoleta/issues"
+  },
+  "homepage": "https://github.com/FranciscaFigueiredo/Ecoleta#readme",
+  "description": ""
 }
