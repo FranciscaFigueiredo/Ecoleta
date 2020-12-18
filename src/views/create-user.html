@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-create-user" %}
+
+{% block title %}
+    <title>Criar uma conta</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/create-user.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+
+    <form action="savepoint" method="POST">
+
+        <h1>Cadastro de usuário</h1>
+
+        <fieldset>
+            <legend>
+                <h2>Dados do usuário</h2>
+            </legend>
+
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" required="required">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="name">Email</label>
+                    <input 
+                        type="email"
+                        name = "email"
+                        required="required">
+                </div>
+
+                <div class="field">
+                    <label for="name">Senha</label>
+                    <input 
+                        type="password"
+                        name = "senha"
+                        required="required">
+                </div>
+            </div>
+         
+        </fieldset>
+
+        
+
+        <!--(type = "submit) significa que quando clicar no botão o formulário será enviado-->
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+
+{% endblock content %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "partials/user-created.html" %}
+    {% endif %}
+{% endblock modal %}
+
+{% block scripts %}
+    <script src="/scripts/create-user.js"></script>
+{% endblock scripts %}

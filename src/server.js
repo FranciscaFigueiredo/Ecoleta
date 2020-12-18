@@ -107,5 +107,53 @@ server.get("/search", (req, res) => {
     
 })
 
+
+
+server.get("/create-user", (req, res) => {
+    return res.render("create-user.html") //nome do diretório que estou
+})
+
+
+server.post("/savepoint", (req, res) => {
+
+    //req.body: O corpo do formulário
+    // console.log(req.body)
+
+    //inserir dados no banco de dados
+    const query = `
+        INSERT INTO users (
+            name,
+            email,
+            senha,
+            id
+        ) VALUES (?,?,?);
+    `
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.senha,
+        req.body.id
+    ]
+
+    function afterInsertData(err) { //chama de volta depois que os anteriores executarem. Evita que a aplicação fique esperando
+        if(err) {
+            console.log(err) //para ver qual erro que aconteceu
+            return res.send("Erro no cadastro!")
+        }
+
+        console.log("Cadastrado com sucesso!")
+        console.log(this) //referencia a resposta que o afterInsertData esta trazendo 
+        // >>>>>> NÃO utilizar arrow function quando usar o this <<<<<<
+
+        return res.render("create-user.html", {saved: true})
+    }
+
+    db.run(query, values, afterInsertData) //afterInsertData sem os () pois ela não vai ser executada imediatamente
+
+})
+
+
+
+
 //ligar o servidor
 server.listen(3000)

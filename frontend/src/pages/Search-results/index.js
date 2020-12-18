@@ -1,19 +1,20 @@
 import React, {useState,useEffect} from 'react'
 import api from '../../services/api.js'
 import {Link} from 'react-router-dom'
+import '../../../public'
 import './style.css'
 
-export default function User() {
-    const [users, setUsers] = useState([])
+export default function Search-results() {
+    const [results, setResults] = useState([])
     useEffect(() => {
-        api.get('users').then(response => {
-            setUsers(response.data)
+        api.get('results').then(response => {
+            setResults(response.data)
         })
     }, [])
 
     return (
         <div id = "user-container">
-            <h1>Lista de usuários</h1>
+            <h1>Resultado da pesquisa</h1>
             <button className = 'button' id = 'create-button' type = 'button'>Criar</button>
 
             <ul className = "user-list">
